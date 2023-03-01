@@ -15,17 +15,20 @@ export default function FrontScreen() {
     require('../../assets/first4.png')
   ]
 
+
+  
+
   useEffect(() => {
-    setInterval(() => { //setinterval is an build in JavaScript function that repeatedly calls a function
+    const interval = setInterval(() => { // setinterval is a built-in JavaScript function that repeatedly calls a function
       if (imageIndex === images.length - 1) {
         setImageIndex(0);
       } else {
         setImageIndex(imageIndex + 1);
       }
     }, 5000);
-
-    return () => clearInterval();
-  }, []);
+  
+    return () => clearInterval(interval);
+  }, [imageIndex]);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FEF6EC' }}>
