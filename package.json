@@ -23,5 +23,16 @@
   "devDependencies": {
     "@babel/core": "^7.20.0"
   },
-  "private": true
+  "private": true,
+  "description": "UI design:  https://www.figma.com/file/lVbeXMPc2bMkunCNEiC791/Reciipe?node-id=0%3A1&t=cRwDKoEDZa23D0xk-1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trinkku/recipeapp_mobile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trinkku/recipeapp_mobile/issues"
+  },
+  "homepage": "https://github.com/Trinkku/recipeapp_mobile#readme"
 }
