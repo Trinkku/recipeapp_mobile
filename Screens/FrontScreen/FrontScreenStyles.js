@@ -15,6 +15,6 @@ export default StyleSheet.create({
     signinrow:{
     flexDirection:'row',
     margin:20,
-    
+    justifyContent:'center',
     }
 })

@@ -7,16 +7,20 @@ import FrontScreenStyles from './FrontScreenStyles'
 
 
 
-export default function FrontScreen() {
+export default function FrontScreen({navigation}) {
   const [imageIndex, setImageIndex] = useState(0);
   const images = [
     require('../../assets/first1.png'),
     require('../../assets/first2.png'),
     require('../../assets/first4.png')
   ]
+  const goToSignup = () => {
+    navigation.navigate('SignUp')
+  }
 
-
-  
+  const goToLogin = () => {
+    navigation.navigate('Login')
+  }
 
   useEffect(() => {
     const interval = setInterval(() => { // setinterval is a built-in JavaScript function that repeatedly calls a function
@@ -38,14 +42,16 @@ export default function FrontScreen() {
           <Text style={{fontSize: 20, marginTop:50}}> Simple recipes</Text>
           <Image style={FrontScreenStyles.image}
           source={images[imageIndex]}/>
-          <Pressable> 
+          <View style={{ marginTop: 30, display:'flex'}}> 
+          <Pressable onPress={goToSignup}> 
             {(state) => <Button pressed={state.pressed} buttonText="Get Started"/>}
           </Pressable>
           <View style={FrontScreenStyles.signinrow}>
             <Text>Already a user? </Text>
-            <Pressable>
+            <Pressable onPress={goToLogin}>
               <Text style={{fontWeight:'bold'}}>Sign in here</Text>
             </Pressable>
+          </View>
 
           </View>
         
