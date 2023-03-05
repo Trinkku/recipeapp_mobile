@@ -5,8 +5,6 @@ import Button from '../../Customs/Button'
 import FrontScreenStyles from './FrontScreenStyles'
 
 
-
-
 export default function FrontScreen({navigation}) {
   const [imageIndex, setImageIndex] = useState(0);
   const images = [
