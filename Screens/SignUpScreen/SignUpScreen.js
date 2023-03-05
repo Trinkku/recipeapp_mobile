@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, setDoc, firestore, doc} from '@firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, setDoc, firestore, doc, USER} from '../../Config';
 import { View, Text, ScrollView, TextInput, Pressable} from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -40,7 +40,7 @@ export default function SignUpScreen() {
     
      const saveUser = async (userId) =>{
         console.log("Saving user with UID: ", userId);
-        await setDoc(doc(firestore,"user", "testi"), {
+        await setDoc(doc(firestore,USER, userId), {
             firstname:firstname,
             lastname:lastname,
             username:username,
