@@ -17,37 +17,30 @@ export default function SignUpScreen() {
     const [username, setUsername] = useState('')
 
 
-    const createAccount = () => {
-    if (password === confirmPassword){
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        console.log("User created with UID: ", user.uid);
-        saveUser(user.uid)
-        
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage)
-      })
-    } else {
-        alert('Passwords do not match')
-      }
-    }
-    
-     const saveUser = async (userId) =>{
-        console.log("Saving user with UID: ", userId);
-        await setDoc(doc(firestore,USER, userId), {
-            firstname:firstname,
-            lastname:lastname,
-            username:username,
-            email:email
-        }).catch(err => console.log(err))
-    }
- 
+    const createAccount = async () => {
+        if (password === confirmPassword) {
+          try {
+            const auth = getAuth();
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log("User created with UID: ", user.uid);
+            console.log("Saving user with UID: ", user.uid);
+            await setDoc(doc(firestore, USER, user.uid), {
+              firstname,
+              lastname,
+              username,
+              email,
+            });
+          } catch (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(errorMessage);
+          }
+        } else {
+          alert("Passwords do not match");
+        }
+      };
+      
     
   return (
    <SafeAreaView style={SignUpStyles.container}>
