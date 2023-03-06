@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Title from '../../Customs/Title'
 import SignUpStyles from './SignUpStyles'
 import Button from '../../Customs/Button';
+import InputWithIcon from '../../Customs/InputIcon';
+
 
 
 export default function SignUpScreen() {
@@ -43,45 +45,59 @@ export default function SignUpScreen() {
       
     
   return (
+    
    <SafeAreaView style={SignUpStyles.container}>
     <Title/>
     <ScrollView contentContainerStyle={SignUpStyles.signUpContainer} bounces={false}>
-        <TextInput style={SignUpStyles.inputField}
-        placeholder='Username'
-        value={username}
-        onChangeText={text => setUsername(text)}
-        />
-        <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', width:'100%'}}>
-            <View style={{flexDirection:'row', maxWidth:338, marginLeft:6,}}>
-                <TextInput style={SignUpStyles.inputField1} 
-                placeholder='First Name' 
-                value={firstname} 
-                onChangeText={text => setFirstName(text)} 
-                />
-                <TextInput style={SignUpStyles.inputField1} 
-                placeholder='Last Name' 
-                value={lastname} 
-                onChangeText={text => setLastName(text)} 
-                />
+        <View style={SignUpStyles.signUpContainer}>
+            <Text>Username</Text>
+            <InputWithIcon icon="person" 
+            placeholder="Username" 
+            value={username} 
+            onChangeText={text => setUsername(text)}/>
+        </View>
+      {/*   <View style={SignUpStyles.signUpContainer}>
+            <Text style={{marginLeft:10}}>Username</Text>
+            <TextInput style={SignUpStyles.inputField}
+            placeholder='Username'
+            value={username}
+            /> 
+        </View>*/}
+        <View style={{flexDirection:'row', alignItems:'center', width:'90%', maxWidth:338}}>
+            <Text> Firtsname</Text>
+            <Text> Lastname</Text>
+        </View>
+        <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', width:'20%'}}>
+            <View style={{flexDirection:'row', maxWidth:338}}>
+                <InputWithIcon icon="person" placeholder="Username" value={username} onChangeText={text => setUsername(text)}/>
+                <InputWithIcon icon="person" placeholder="Username" value={username} onChangeText={text => setUsername(text)}/>
             </View>
         </View>
-        <TextInput style={SignUpStyles.inputField}
-        placeholder='Email address'
-        value={email}
-        onChangeText={text => setEmail(text)}
-        />
-         <TextInput style={SignUpStyles.inputField}
-        placeholder='Password'
-        secureTextEntry={true}
-        value={password}
-        onChangeText={text => setPassword(text)}
-        />
-           <TextInput style={SignUpStyles.inputField}
-        placeholder='Re-enter Password'
-        secureTextEntry={true}
-        value={confirmPassword}
-        onChangeText={text => setConfirmPassword(text)}
-        />
+        <View style={SignUpStyles.signUpContainer}>
+            <Text>Username</Text>
+            <InputWithIcon icon="email" 
+            placeholder="Email address" 
+            value={email} 
+            onChangeText={text => setEmail(text)}/>
+        </View>
+
+        <View style={SignUpStyles.signUpContainer}>
+            <Text>Password</Text>
+            <InputWithIcon icon="lock" 
+            placeholder="Password" 
+            value={password} 
+            secureTextEntry={true}
+            onChangeText={text => setPassword(text)}/>
+        </View>
+        <View style={SignUpStyles.signUpContainer}>
+            <Text>Re-enter password</Text>
+            <InputWithIcon icon="lock" 
+            placeholder="Re-enter password" 
+            value={confirmPassword} 
+            secureTextEntry={true}
+            onChangeText={text => setConfirmPassword(text)}/>
+        </View>
+        
         <View style={{marginTop:30}}> 
         <Pressable onPress={createAccount}> 
             {(state) => <Button pressed={state.pressed} buttonText="Create user"/>}
