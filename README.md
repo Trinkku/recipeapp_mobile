@@ -5,7 +5,8 @@ Currently I am developing a mobile recipe application with Expo to learn more. T
 ## Technologies
   - React Native
   - Axios
-  - Firebase Authentication
+  - Firebase Authentication and Firestore
+  
   
 UI design: 
 https://www.figma.com/file/lVbeXMPc2bMkunCNEiC791/Reciipe?node-id=0%3A1&t=cRwDKoEDZa23D0xk-1
