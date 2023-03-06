@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: 10,
     backgroundColor:'#FFFFFF',
+
   },
   icon: {
     marginRight: 10,

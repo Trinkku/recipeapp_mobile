@@ -1,13 +1,12 @@
 import { getAuth, createUserWithEmailAndPassword, setDoc, firestore, doc, USER} from '../../Config';
-import { View, Text, ScrollView, TextInput, Pressable} from 'react-native'
+import { View, Text, ScrollView, Pressable} from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Title from '../../Customs/Title'
 import SignUpStyles from './SignUpStyles'
 import Button from '../../Customs/Button';
 import InputWithIcon from '../../Customs/InputIcon';
-
-
+import ModalComponent from '../../Customs/ModalComponent';
 
 export default function SignUpScreen() {
 
@@ -17,7 +16,7 @@ export default function SignUpScreen() {
     const [firstname, setFirstName] = useState('')
     const [lastname, setLastName] = useState('')
     const [username, setUsername] = useState('')
-
+    const [showModal, setShowModal] = useState(false)
 
     const createAccount = async () => {
         if (password === confirmPassword) {
@@ -25,14 +24,13 @@ export default function SignUpScreen() {
             const auth = getAuth();
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-            console.log("User created with UID: ", user.uid);
-            console.log("Saving user with UID: ", user.uid);
             await setDoc(doc(firestore, USER, user.uid), {
               firstname,
               lastname,
               username,
               email,
             });
+            setShowModal(true)
           } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -49,60 +47,63 @@ export default function SignUpScreen() {
    <SafeAreaView style={SignUpStyles.container}>
     <Title/>
     <ScrollView contentContainerStyle={SignUpStyles.signUpContainer} bounces={false}>
-        <View style={SignUpStyles.signUpContainer}>
-            <Text>Username</Text>
+        <View style={SignUpStyles.signUpForm}>
+            <Text style={{justifyContent:'flex-start'}}>Username</Text>
             <InputWithIcon icon="person" 
             placeholder="Username" 
             value={username} 
             onChangeText={text => setUsername(text)}/>
         </View>
-      {/*   <View style={SignUpStyles.signUpContainer}>
-            <Text style={{marginLeft:10}}>Username</Text>
-            <TextInput style={SignUpStyles.inputField}
-            placeholder='Username'
-            value={username}
-            /> 
-        </View>*/}
-        <View style={{flexDirection:'row', alignItems:'center', width:'90%', maxWidth:338}}>
-            <Text> Firtsname</Text>
-            <Text> Lastname</Text>
+        <View style={{flexDirection:'row', alignItems:'center', width:'90%', maxWidth:338}}> 
+          <View style={SignUpStyles.signUpForm1}>
+              <Text style={{justifyContent:'flex-start'}}>First name</Text>
+              <InputWithIcon icon="person" 
+              placeholder="First name" 
+              value={firstname} 
+              onChangeText={text => setFirstName(text)}/>
+          </View>
+          <View style={SignUpStyles.signUpForm1}>
+              <Text style={{justifyContent:'flex-start'}}>Last name</Text>
+              <InputWithIcon icon="person" 
+              placeholder="Last name" 
+              value={lastname} 
+              onChangeText={text => setLastName(text)}/>
+          </View>
         </View>
-        <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center', width:'20%'}}>
-            <View style={{flexDirection:'row', maxWidth:338}}>
-                <InputWithIcon icon="person" placeholder="Username" value={username} onChangeText={text => setUsername(text)}/>
-                <InputWithIcon icon="person" placeholder="Username" value={username} onChangeText={text => setUsername(text)}/>
-            </View>
-        </View>
-        <View style={SignUpStyles.signUpContainer}>
-            <Text>Username</Text>
+        <View style={SignUpStyles.signUpForm}>
+            <Text style={{justifyContent:'flex-start'}}>Email</Text>
             <InputWithIcon icon="email" 
-            placeholder="Email address" 
+            placeholder="Email Adress" 
             value={email} 
             onChangeText={text => setEmail(text)}/>
         </View>
-
-        <View style={SignUpStyles.signUpContainer}>
-            <Text>Password</Text>
+        <View style={SignUpStyles.signUpForm}>
+            <Text style={{justifyContent:'flex-start'}}>Password</Text>
             <InputWithIcon icon="lock" 
             placeholder="Password" 
-            value={password} 
             secureTextEntry={true}
+            value={password} 
             onChangeText={text => setPassword(text)}/>
         </View>
-        <View style={SignUpStyles.signUpContainer}>
-            <Text>Re-enter password</Text>
+        <View style={SignUpStyles.signUpForm}>
+            <Text style={{justifyContent:'flex-start'}}>Confirm Password</Text>
             <InputWithIcon icon="lock" 
+            secureTextEntry={true}
             placeholder="Re-enter password" 
             value={confirmPassword} 
-            secureTextEntry={true}
             onChangeText={text => setConfirmPassword(text)}/>
         </View>
         
-        <View style={{marginTop:30}}> 
+
+        <View style={{marginTop:30, justifyContent:'center'}}> 
         <Pressable onPress={createAccount}> 
             {(state) => <Button pressed={state.pressed} buttonText="Create user"/>}
         </Pressable>
         </View>
+        {showModal && (
+        <ModalComponent isVisible={showModal} onClose={() => setShowModal(false)} />
+        )}
+
     </ScrollView>
    </SafeAreaView>
   )

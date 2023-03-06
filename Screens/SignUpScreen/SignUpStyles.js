@@ -10,26 +10,18 @@ export default StyleSheet.create({
 
     signUpContainer:{
     width: 350,
-    alignItems: 'flex-start',
+    alignItems: 'center',
     flexDirection:'column'
     },
 
-    inputField:{
+    signUpForm:{
+    justifyContent:'flex-start',
     width:'90%',
-    margin: 10,
-    padding:15,
-    borderRadius:10,
-    backgroundColor:'#FFFFFF',
-    borderColor:'black',
-    borderWidth:1,
+    
     },
-    inputField1:{
-    width:150,
-    padding:15,
-    margin:10,
-    borderRadius:10,
-    backgroundColor:'#FFFFFF',
-    borderColor:'black',
-    borderWidth:1,
-    }
+
+    signUpForm1:{
+    justifyContent:'flex-start',
+    width:'45%',
+    },
 })
