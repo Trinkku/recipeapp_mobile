@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Title from '../../Customs/Title'
 import SignUpStyles from './SignUpStyles'
-import Button from '../../Customs/Button';
+import Buttons from '../../Customs/Buttons';
 import InputWithIcon from '../../Customs/InputIcon';
 import ModalComponent from '../../Customs/ModalComponent';
 
@@ -45,25 +45,25 @@ export default function SignUpScreen() {
   return (
     
    <SafeAreaView style={SignUpStyles.container}>
-    <Title/>
+    <Title titleText='LeCook'/>
     <ScrollView contentContainerStyle={SignUpStyles.signUpContainer} bounces={false}>
         <View style={SignUpStyles.signUpForm}>
-            <Text style={{justifyContent:'flex-start'}}>Username</Text>
+            <Text style={SignUpStyles.label}>Username</Text>
             <InputWithIcon icon="person" 
             placeholder="Username" 
             value={username} 
             onChangeText={text => setUsername(text)}/>
         </View>
-        <View style={{flexDirection:'row', alignItems:'center', width:'90%', maxWidth:338}}> 
+        <View style={{flexDirection:'row', alignItems:'center', width:'90%'}}> 
           <View style={SignUpStyles.signUpForm1}>
-              <Text style={{justifyContent:'flex-start'}}>First name</Text>
+              <Text style={SignUpStyles.label}>First name</Text>
               <InputWithIcon icon="person" 
               placeholder="First name" 
               value={firstname} 
               onChangeText={text => setFirstName(text)}/>
           </View>
           <View style={SignUpStyles.signUpForm1}>
-              <Text style={{justifyContent:'flex-start'}}>Last name</Text>
+              <Text style={SignUpStyles.label}>Last name</Text>
               <InputWithIcon icon="person" 
               placeholder="Last name" 
               value={lastname} 
@@ -71,14 +71,14 @@ export default function SignUpScreen() {
           </View>
         </View>
         <View style={SignUpStyles.signUpForm}>
-            <Text style={{justifyContent:'flex-start'}}>Email</Text>
+            <Text style={SignUpStyles.label}>Email Adress</Text>
             <InputWithIcon icon="email" 
-            placeholder="Email Adress" 
+            placeholder="Email Address" 
             value={email} 
             onChangeText={text => setEmail(text)}/>
         </View>
         <View style={SignUpStyles.signUpForm}>
-            <Text style={{justifyContent:'flex-start'}}>Password</Text>
+            <Text style={SignUpStyles.label}>Password</Text>
             <InputWithIcon icon="lock" 
             placeholder="Password" 
             secureTextEntry={true}
@@ -86,7 +86,7 @@ export default function SignUpScreen() {
             onChangeText={text => setPassword(text)}/>
         </View>
         <View style={SignUpStyles.signUpForm}>
-            <Text style={{justifyContent:'flex-start'}}>Confirm Password</Text>
+            <Text style={SignUpStyles.label}>Confirm Password</Text>
             <InputWithIcon icon="lock" 
             secureTextEntry={true}
             placeholder="Re-enter password" 
@@ -97,7 +97,7 @@ export default function SignUpScreen() {
 
         <View style={{marginTop:30, justifyContent:'center'}}> 
         <Pressable onPress={createAccount}> 
-            {(state) => <Button pressed={state.pressed} buttonText="Create user"/>}
+            {(state) => <Buttons pressed={state.pressed} buttonText="Create user"/>}
         </Pressable>
         </View>
         {showModal && (

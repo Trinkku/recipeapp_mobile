@@ -23,5 +23,9 @@ export default StyleSheet.create({
     signUpForm1:{
     justifyContent:'flex-start',
     width:'45%',
+    marginRight:20
     },
+    label:{
+    textAlign:'left'
+    }
 })

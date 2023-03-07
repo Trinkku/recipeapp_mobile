@@ -1,22 +1,24 @@
-import { View, Text, Modal,Button, StyleSheet } from 'react-native'
+import { View, Text, Modal,Pressable, StyleSheet } from 'react-native'
 import React from 'react'
-import { useNavigation } from '@react-navigation/core'
+import ButtonSmall from './ButtonSmall'
 
-const ModalComponent = ({isVisible, onClose}) => {
 
-  const navigation = useNavigation()
+const ModalComponent = ({isVisible, onClose, navigation}) => {
 
-  const handleSignIn = () => {
-    navigation.navigate('')
-  }
+
+
   return (
     <Modal isVisible={isVisible} animationType='slide' transparent={true}>
-    <View style={styles.wrapper}>
+    <View style={styles.container}>
       <View style={styles.content}>
-        <Text style={{textAlign:'center',fontSize:20}}>Thank you for registering! Sign in now.</Text>
-        <Button title="Sign in"  />
-        <Button title="Close" onPress={onClose} />
-      </View>
+        <Text style={styles.title}>Thank you for registering! Sign in now.</Text>
+        <Text style={styles.label}>We have new recipes daily. selecting any layers and using the color picker from the Background section of the right sidebar.</Text>
+
+      
+          <Pressable onPress={() => navigation.navigate('Login')}> 
+            {(state) => <ButtonSmall pressed={state.pressed} buttonText="Sign in"/>}
+          </Pressable>
+          </View>
     </View>
   </Modal>
   )
@@ -25,19 +27,34 @@ const ModalComponent = ({isVisible, onClose}) => {
 export default ModalComponent
 
 const styles = StyleSheet.create({
-  wrapper: {
+  container: {
     flex: 1, 
     justifyContent: 'center', 
     alignItems: 'center',
   },
   content: {
-      backgroundColor:'#FAEDED',
+      backgroundColor:'#FFFFFF',
       borderColor:'gray',
       borderWidth: 1,
       borderRadius:20,
       height:'50%',
       width:'70%',
-      justifyContent:'center'
+      justifyContent:'center',
+      alignItems:'center',
+      
+   },
+   title:{
+    textAlign:'center',
+    fontSize:25, 
+    fontWeight:'bold',
+    marginBottom:30,
+   },
+   label:{
+    marginLeft:15,
+    fontSize:15, 
+    fontWeight:'light',
+    marginBottom:30,
+    color:'gray'
    }
 
 })

@@ -1,8 +1,9 @@
 import { View, ScrollView, Pressable, SafeAreaView, Text, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Title from '../../Customs/Title'
-import Button from '../../Customs/Button'
+import Buttons from '../../Customs/Buttons'
 import FrontScreenStyles from './FrontScreenStyles'
+
 
 
 export default function FrontScreen({navigation}) {
@@ -36,17 +37,17 @@ export default function FrontScreen({navigation}) {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#FEF6EC' }}>
       <ScrollView>
         <View style={FrontScreenStyles.container}>
-        <Title/>
+          <Title titleText='LeCook'/>
           <Text style={{fontSize: 20, marginTop:50}}> Simple recipes</Text>
           <Image style={FrontScreenStyles.image}
           source={images[imageIndex]}/>
           <View style={{ marginTop: 30, display:'flex'}}> 
           <Pressable onPress={goToSignup}> 
-            {(state) => <Button pressed={state.pressed} buttonText="Get Started"/>}
+            {(state) => <Buttons pressed={state.pressed} buttonText="Get Started"/>}
           </Pressable>
           <View style={FrontScreenStyles.signinrow}>
             <Text>Already a user? </Text>
-            <Pressable onPress={goToLogin}>
+            <Pressable onPress={()=> navigation.navigate('Login')}>
               <Text style={{fontWeight:'bold'}}>Sign in here</Text>
             </Pressable>
           </View>
