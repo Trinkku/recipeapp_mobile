@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
-import FrontScreen from '../FrontScreen/FrontScreen';
-import Login from '../Login/LoginScreen';
-import SignUpScreen from '../SignUpScreen/SignUpScreen';
+import FrontScreen from '../Screens/FrontScreen/FrontScreen';
+import Login from '../Screens/Login/LoginScreen';
+import SignUpScreen from '../Screens/SignUpScreen/SignUpScreen';
 
 
 export default function LoginNavigator() {
@@ -18,6 +18,7 @@ export default function LoginNavigator() {
         <Stack.Screen name= 'Front' component={FrontScreen} options={{headerShown: false}}/>
         <Stack.Screen name = 'SignUp' component={SignUpScreen}/>
         <Stack.Screen name = 'Login' component={Login}/>
+        
    </Stack.Navigator>
 
   )

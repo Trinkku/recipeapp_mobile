@@ -17,10 +17,6 @@ export default function FrontScreen({navigation}) {
     navigation.navigate('SignUp')
   }
 
-  const goToLogin = () => {
-    navigation.navigate('Login')
-  }
-
   useEffect(() => {
     const interval = setInterval(() => { // setinterval is a built-in JavaScript function that repeatedly calls a function
       if (imageIndex === images.length - 1) {

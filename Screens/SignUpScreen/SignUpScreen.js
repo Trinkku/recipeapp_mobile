@@ -1,5 +1,6 @@
 import { getAuth, createUserWithEmailAndPassword, setDoc, firestore, doc, USER} from '../../Config';
 import { View, Text, ScrollView, Pressable} from 'react-native'
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Title from '../../Customs/Title'
@@ -17,6 +18,8 @@ export default function SignUpScreen() {
     const [lastname, setLastName] = useState('')
     const [username, setUsername] = useState('')
     const [showModal, setShowModal] = useState(false)
+
+    const navigation = useNavigation();
 
     const createAccount = async () => {
         if (password === confirmPassword) {
@@ -101,7 +104,7 @@ export default function SignUpScreen() {
         </Pressable>
         </View>
         {showModal && (
-        <ModalComponent isVisible={showModal} onClose={() => setShowModal(false)} />
+        <ModalComponent isVisible={showModal} navigation={navigation}  />
         )}
 
     </ScrollView>
