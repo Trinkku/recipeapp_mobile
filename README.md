@@ -1,6 +1,6 @@
 # Recipe Mobile App 🍜🍲🥪🥙
  
-Currently I am developing a mobile recipe application with Expo to learn more. The application is aimed for low-income students. The intention is to develop a shopping list and counter for the application. The user can enter the groceries to be bought into a shopping list. When the user enters the prices and weights of the raw ingredients, the counter calculates the prices of the portions using the entered data. When a user enters a raw ingredient in the search, all recipes containing that raw ingredient will be displayed.
+I'm currently working on this project to develop a mobile recipe application using Expo. The application is specifically designed to help low-income students plan and prepare meals on a budget. I'm incorporating advanced features like a shopping list and a cost calculator to help users easily plan and manage their groceries. The app also has a unique search feature that allows users to find recipes based on the ingredients they have on hand.
 
 ## Technologies
   - React Native
