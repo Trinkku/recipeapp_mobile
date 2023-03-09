@@ -7,6 +7,7 @@ export const COLORS = {
     pink: '#FD7BA580',
     blue: '#00A4FF80',
     orange:'#EE7B2D',
+    lightOrange:'#EBBBA2',
     white: '#FFFFFFF',
     transparent:'#0000ffff',
     backgroundLight: '#F9F5F1',

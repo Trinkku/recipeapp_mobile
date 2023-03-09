@@ -9,49 +9,53 @@ import Recipes from '../Screens/SignUpScreen/Recipes';
 import ShoppingList from '../Screens/ShoppingList';
 import MainNavigator from './MainNavigator';
 
+import { COLORS } from '../Customs/Colors';
 
 
 export default function TabNavigators() {
-  const Tab = createBottomTabNavigator()
 
+  const Tab = createBottomTabNavigator()
 
   return (
    
     <Tab.Navigator
-      tabBarOptions={{
-        style:{
-          position:'absolute',
-          bottom:0,
-          right:0,
-          left: 0,
-          elevation:0,
-        }
+      screenOptions={{
+        tabBarActiveTintColor:COLORS.orange,
+        tabBarInactiveTintColor:COLORS.lightOrange,
+          tabBarStyle:{
+            height:100,
+            backgroundColor:COLORS.white,
+          }
+      
+
       }}
-      >
+    >
          <Tab.Screen
           name="Main" 
           options={{
-            tabBarIcon:({color}) => (
-            <MaterialCommunityIcons name="chef-hat" size={24} color={color} />
+            tabBarIcon:({color, focused}) => (
+            <MaterialCommunityIcons focused={focused} name="chef-hat" size={24} color={color} /> 
+          
              ),
           title: "Home"
           }}    component={MainNavigator}/>
 
       
         <Tab.Screen
-        name='Recipes' options={{
-            tabBarIcon:({color}) => (
-            <MaterialCommunityIcons name="chef-hat" size={24} color={color} />
+        name='Recipes' 
+        options={{
+          tabBarIcon:({color, focused}) => (
+          <MaterialCommunityIcons focused={focused} name="silverware-fork-knife" size={24} color={color} /> 
             ),
-            title:'recipes'
+            title:'Recipes'
         }} component={Recipes}
         />
      <Tab.Screen name='Shoppinglist' 
-     options={{
-            tabBarIcon:({color}) => (
-            <MaterialCommunityIcons name="chef-hat" size={24} color={color} />
+      options={{
+        tabBarIcon:({color, focused}) => (
+        <MaterialCommunityIcons name="clipboard-list-outline"  size={24} color={color} />
             ),
-            title:'shoppinglist'
+            title:'Shoppinglist'
         }} component={ShoppingList}
         />
     </Tab.Navigator>
