@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native'
-
+import {COLORS} from '../../Customs/Colors'
 export default StyleSheet.create({
 
     container:{
     alignItems:'center',
     flex: 1,
-    backgroundColor:'#F9F5F1'
+    backgroundColor:COLORS.backgroundLight
     },
 
     signUpContainer:{
