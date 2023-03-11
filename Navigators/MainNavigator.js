@@ -5,6 +5,7 @@ import Home from '../Screens/Home'
 
 import { COLORS } from '../Customs/Colors'
 import Search from '../Customs/SearchBox'
+import Recipe from '../Screens/Recipe'
 
 
 
@@ -22,15 +23,13 @@ export default function MainNavigator({navigation}) {
   return (
     <Stack.Navigator>
       <Stack.Screen
-      name="Home"
-      component={Home}
-      
-      options={{
+        name="Home"
+        component={Home}
+        options={{
           headerTitle:'',
           headerLeft: () => (
             <Button
               onPress={() => {console.log('reseptit')
-  
               }
             }
               title="browse recipes"
@@ -47,6 +46,11 @@ export default function MainNavigator({navigation}) {
             backgroundColor:COLORS.backgroundLight,
           }
         }}
+      />
+      <Stack.Screen
+        name='RecipePage'
+        component={Recipe}
+        options={{}}
       />
 
 </Stack.Navigator>
