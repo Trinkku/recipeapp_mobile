@@ -6,6 +6,7 @@ import TabNavigators from './Navigators/TabNavigators';
 import { AuthContext } from './context/Authcontext';
 import { useState } from 'react';
 import Home from './Screens/Home';
+import { COLORS } from './Customs/Colors';
 
 export default function App() {
 
@@ -27,7 +28,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: COLORS.roundLight,
     alignItems: 'center',
     justifyContent: 'center',
   },
