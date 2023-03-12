@@ -5,8 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 
-import Home from '../Screens/Home';
-import Recipes from '../Screens/SignUpScreen/Recipes';
+import RecipeScreen from '../Screens/RecipeScreen';
 import ShoppingList from '../Screens/ShoppingList';
 import MainNavigator from './MainNavigator';
 
@@ -28,19 +27,18 @@ export default function TabNavigators() {
             backgroundColor:COLORS.white,
             ...(Platform.OS === 'android' && { elevation: 0, borderWidth: 1, borderColor: COLORS.gray }),
           }
-      
-
       }}
     >
          <Tab.Screen
           name="Main" 
+          component={MainNavigator}
           options={{
             tabBarIcon:({color, focused}) => (
             <MaterialCommunityIcons focused={focused} name="chef-hat" size={24} color={color} /> 
              ),
           title: "Home",
           headerShown:false
-          }}    component={MainNavigator}/>
+          }}  />
 
       
         <Tab.Screen
@@ -50,7 +48,7 @@ export default function TabNavigators() {
           <MaterialCommunityIcons focused={focused} name="silverware-fork-knife" size={24} color={color} /> 
             ),
             title:'Recipes'
-        }} component={Recipes}
+        }} component={RecipeScreen}
         />
      <Tab.Screen name='Shoppinglist' 
       options={{
